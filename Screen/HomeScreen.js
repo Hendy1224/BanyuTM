@@ -4,7 +4,9 @@ import 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../Styles/StylesHomeScreen';
 import stylesberita from '../Styles/StylesBerita';
+import styleswisata from '../Styles/StylesWisata';
 import BeritaDummy from './BeritaDummy';
+import WisataDummy from './WisataDummy';
 import Components from './Components';
 import { SearchBar } from 'react-native-elements';
 
@@ -90,7 +92,7 @@ const Berita = ()=> {
             <ScrollView>
                 <FlatList
                     data = {BeritaDummy.dataBerita}
-                    renderItem = {Components.renderTransaksiItem}                  
+                    renderItem = {Components.beritaItem}                  
                 />
             </ScrollView>
         </SafeAreaView>
@@ -99,9 +101,27 @@ const Berita = ()=> {
 
 const ObjekWisata = ()=>{
     return(
-        <Text>
-            Objek Wisata Screen 
-        </Text>
+        <SafeAreaView>
+            <View style = {styleswisata.viewHeader}>
+                <Text style = {{fontSize: 30, color: '#FFFFFF', marginLeft: 16, paddingTop: 10}}>
+                    Objek Wisata
+                </Text>
+            </View>
+            <View style = {{marginTop: 10}}>
+                <TextInput
+                    style={styleswisata.search}
+                    placeholder="Mencari . . . ."
+                    setSearchQuery = {text => setSearchQuery(searchQuery)}
+                    underlineColorAndroid="transparent"
+                />
+            </View>
+            <ScrollView>
+                <FlatList
+                    data = {WisataDummy.dataWisata}
+                    renderItem = {Components.wisataItem}                  
+                />
+            </ScrollView>
+        </SafeAreaView>
     )
 }
 
